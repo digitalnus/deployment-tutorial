@@ -2,7 +2,7 @@ name: Deployment from Github To AWS
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -32,9 +32,9 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: beanstalk-engineer-v2
-          environment_name: BeanstalkEngineerV2-env
-          version_label: "the-beanstalk-deployment-sample-${{ steps.format-time }}"
+          application_name: simple-deployment
+          environment_name: Simpledeployment-env
+          version_label: "the-beanstalk-deployment-sample-${{ steps.format-time.outputs.replaced }}"
           region: us-east-2
           deployment_package: deploy.zip
           
